@@ -22,28 +22,7 @@ period = 14
 Getdata.Getdata(period) # Get the newest period*3 days of date
 df = pd.read_csv('data.csv')
 timeseries = df[["Close","Open","High","Low","Volume","vader_sentiment"]].values.astype('float32')
-'''
-# dataset is the feature you want to use
-# lookback means how long/many the data you wann to use as an input
-def create_dataset(dataset, lookback):
-    """Transform a time series into a prediction dataset
 
-    Args:
-        dataset: A numpy array of time series, first dimension is the time steps
-        lookback: Size of window for prediction
-    """
-    X, y = [], []
-    for i in range(len(dataset) - lookback):
-        feature = np.array(dataset[i:i + lookback])
-        target = np.array(dataset[i + 1:i + lookback + 1,0:1])
-        X.append(feature)
-        y.append(target)
-        X_=np.array(X)
-        y_=np.array(y)
-    return torch.tensor(X_), torch.tensor(y_)
-
-myinput,mynotiong= create_dataset(timeseries,5)
-'''
 ##############################################################################################
 #################################  Server part  ##############################################
 ##############################################################################################
