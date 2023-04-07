@@ -18,8 +18,8 @@ import pandas as pd
 import numpy as np
 
 ####### need to update before using the prediction function, if you want to predict the data in the future
-#period = 14
-#Getdata.Getdata(period) # Get the newest period*3 days of date
+period = 14
+Getdata.Getdata(period) # Get the newest period*3 days of date
 df = pd.read_csv('data.csv')
 timeseries = df[["Close","Open","High","Low","Volume","vader_sentiment"]].values.astype('float32')
 '''
