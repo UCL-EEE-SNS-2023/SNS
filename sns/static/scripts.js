@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const sendButton = document.getElementById("send-button");
     const chatContent = document.getElementById("chat-content");
 
-    // 显示来自 chatbot 的欢迎消息
+    // Show welcome messages from chatbot
     displayMessage("Hello, I am the Oracle! I will provide you with predictive data for Tesla's stock in the coming days.", "received");
 
     sendButton.addEventListener("click", sendMessage);
@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function sendMessage() {
         const message = userInput.value.trim();
         if (message) {
-            // 显示用户发送的消息
+            // Show messages sent by users
             displayMessage(message, "sent");
 
-            // 清空输入框
+            // Clear input box
             userInput.value = "";
 
-            // 向后端发送消息并接收回复
+            // Sending messages to the back end and receiving replies
             fetch("http://127.0.0.1:5000/message", {
                 method: "POST",
                 headers: {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.json();
                 })
                 .then((data) => {
-                    // 显示收到的消息
+                    // Show incoming messages
                     displayMessage(data.reply, "received", data.image_url);
                 })
                 .catch((error) => {
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         chatContent.appendChild(messageDiv);
 
-        // 滚动到最新消息
+        // Scroll to Latest News
         chatContent.scrollTop = chatContent.scrollHeight;
     }
 });
